@@ -1,0 +1,42 @@
+seed: 42
+data:
+  root: data/maestro
+  metadata_csv: data/maestro/maestro-v3.0.0/maestro-v3.0.0.csv
+  debug: true
+  max_tracks: 24
+features:
+  sample_rate: 16000
+  n_fft: 2048
+  hop_length: 512
+  n_mels: 229
+  fmin: 30
+  fmax: 8000
+  log_offset: 1.0e-6
+  pitch_min: 21
+  pitch_max: 108
+  frame_rate_hz: 31.25
+model:
+  hidden_size: 256
+  gru_layers: 2
+  dropout: 0.2
+  batch_size: 16
+  epochs: 30
+  learning_rate: 0.001
+  chunk_frames: 512
+  chunk_overlap: 64
+prior:
+  hidden_units: 256
+  cd_k: 1
+  gibbs_steps: 8
+  learning_rate: 0.001
+  batch_size: 128
+  epochs: 50
+decoding:
+  frame_threshold: 0.5
+  min_note_frames: 2
+  beam_width: 32
+paths:
+  acoustic: models/acoustic.pt
+  rbm: models/rbm.pt
+  nade: models/nade.pt
+  made: models/made.pt
